@@ -9,11 +9,11 @@ led = Pin('LED', Pin.OUT)
 SSID = 'Bonne nuit'
 PASSWORD = 'lol23456'
 
-# PC server IP and port
-PC_IP = '192.168.12.139'  # Change to your PC's IP
+
+PC_IP = '192.168.xx.xxx' 
 PC_PORT = 12345
 
-# Setup motors (pins according to your wiring)
+
 motor1_a = PWM(Pin(26))
 motor1_b = PWM(Pin(27))
 motor2_a = PWM(Pin(17))
@@ -50,7 +50,6 @@ def turn_right(speed=40000):
     motor2_a.duty_u16(0)
     motor2_b.duty_u16(speed)
 
-# Connect to Wi-Fi
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 wlan.connect(SSID, PASSWORD)
@@ -68,7 +67,6 @@ else:
     led.off()
     raise SystemExit
 
-# Connect to PC server
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 try:
     sock.connect((PC_IP, PC_PORT))
