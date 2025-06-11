@@ -2,14 +2,14 @@ import socket
 from flask import Flask, request, jsonify, render_template_string
 import threading
 
-# TCP Server setup
+
 HOST = '0.0.0.0'
 PORT = 12345
 
-# Dictionary to hold multiple robot connections
-robot_connections = {}  # key: robot_id, value: conn
 
-# Background thread to accept multiple connections
+robot_connections = {}
+
+
 def tcp_server():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind((HOST, PORT))
@@ -26,7 +26,7 @@ def tcp_server():
 
 threading.Thread(target=tcp_server, daemon=True).start()
 
-# Flask Web App
+
 app = Flask(__name__)
 
 HTML_PAGE = '''
